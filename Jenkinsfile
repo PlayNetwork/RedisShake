@@ -1,5 +1,5 @@
 pipeline {
-  agent golang
+  agent {golang}
   stages {
     stage("local") {
       steps {
