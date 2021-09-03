@@ -1,8 +1,6 @@
 pipeline {
   agent {
-	docker {
 		label 'golang'
-    }
   } 
   stages {
     stage("local") {
