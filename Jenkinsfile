@@ -3,7 +3,7 @@ pipeline {
         label 'golang'
     }
     stages {
-        stage('local') {
+        stage('build-stage') {
             environment {
                 source_cluster_ip = '10.100.100.100'
                 source_cluster_type = 'master'

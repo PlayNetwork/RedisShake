@@ -15,6 +15,7 @@ build:
 	--build-arg destination_cluster_ip=${destination_cluster_ip} \
 	--build-arg destination_cluster_type=${destination_cluster_type} \
 	--build-arg destination_cluster_port=${destination_cluster_port} \
+	-t test
 
 clean:
 	rm -rf bin

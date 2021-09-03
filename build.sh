@@ -38,7 +38,7 @@ echo "[ BUILD RELEASE ]"
 BIN_DIR=$(pwd)/bin/
 cd src
 goos=(linux darwin windows)
-for g in "linux" "darwin" "windows";
+for g in "linux";
 do
     echo "try build GOOS=$g"
     export GOOS=$g

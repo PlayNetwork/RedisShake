@@ -19,12 +19,13 @@ ENV destination_cluster_ip=${destination_cluster_ip}
 ENV destination_cluster_type=${destination_cluster_type}
 ENV destination_cluster_port=${destination_cluster_port}
 
-# We here give the type of node that we are targeting aka "slave" since we want to read from the source replicas from the cluster not the masters
 
-# example of final "source.address" parameter passed to redis-shake.conf slave@10.133.31.143:7000
-RUN echo $source_cluster_ip &&\
-	echo $source_cluster_type
+RUN sed -i "s/parallel = 32/parallel = 16/g" /usr/local/app/redis-shake.conf
+RUN sed -i "s/source\.type = standalone/source\.type = cluster/g" /usr/local/app/redis-shake.conf
+RUN sed -i "s/source\.address = 127.0.0.1:20441/source\.address = ${source_cluster_type}@${source_cluster_ip}:${source_cluster_port}/g" /usr/local/app/redis-shake.conf
 
-# example of final "destination.address" parameter passed to redis-shake.conf slave@10.133.31.143:7000
+RUN sed -i "s/target\.type = standalone/target\.type = cluster/g" /usr/local/app/redis-shake.conf
+RUN sed -i "s/target\.address = 127.0.0.1:6379/target\.address = ${destination_cluster_type}@${destination_cluster_ip}:${source_cluster_port}/g" /usr/local/app/redis-shake.conf
+
 
 CMD /usr/local/app/redis-shake -type=${TYPE} -conf=/usr/local/app/redis-shake.conf
