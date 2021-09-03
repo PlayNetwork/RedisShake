@@ -27,5 +27,6 @@ RUN sed -i "s/source\.address = 127.0.0.1:20441/source\.address = ${source_clust
 RUN sed -i "s/target\.type = standalone/target\.type = cluster/g" /usr/local/app/redis-shake.conf
 RUN sed -i "s/target\.address = 127.0.0.1:6379/target\.address = ${destination_cluster_type}@${destination_cluster_ip}:${source_cluster_port}/g" /usr/local/app/redis-shake.conf
 
+RUN cat /usr/local/app/redis-shake.conf
 
 CMD /usr/local/app/redis-shake -type=${TYPE} -conf=/usr/local/app/redis-shake.conf
