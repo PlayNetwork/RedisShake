@@ -7,7 +7,6 @@ build:
 
 	# Here we pull env variables and pass them to our docker build from the pipeline
 	docker build . \
-	--progress=plain \
 	--no-cache \
 	--build-arg source_cluster_ip=${source_cluster_ip} \
 	--build-arg source_cluster_type=${source_cluster_type} \
