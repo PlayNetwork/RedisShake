@@ -16,10 +16,10 @@ build:
 	--build-arg destination_cluster_ip=${destination_cluster_ip} \
 	--build-arg destination_cluster_type=${destination_cluster_type} \
 	--build-arg destination_cluster_port=${destination_cluster_port} \
-	-t test
+	-t ${env}
 
-	docker tag test docker-apps-dev.artifactory.tsp.cld.touchtunes.com/docker-apps-test/test
-	docker push docker-apps-dev.artifactory.tsp.cld.touchtunes.com/docker-apps-test/test
+	docker tag test docker-apps-${env}.artifactory.tsp.cld.touchtunes.com/docker-apps-${env}/redis-shake-${env}
+	docker push docker-apps-${env}.artifactory.tsp.cld.touchtunes.com/docker-apps-${env}/redis-shake-${env}
 
 clean:
 	rm -rf bin
