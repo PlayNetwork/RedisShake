@@ -8,6 +8,7 @@ pipeline {
 
 		        stage('build-stage') {
 		            environment {
+		                env = 'stage'
 		                source_cluster_ip = '10.100.100.100'
 		                source_cluster_type = 'master'
 		                source_cluster_port = '7000'
@@ -21,6 +22,7 @@ pipeline {
 		        }
 		        stage('build-dev') {
 		            environment {
+		                env = 'dev'
 		                source_cluster_ip = '10.100.100.100'
 		                source_cluster_type = 'master'
 		                source_cluster_port = '7000'
@@ -34,6 +36,7 @@ pipeline {
 		        }
 		        stage('build-prod') {
 		            environment {
+						env = 'prod'
 		                source_cluster_ip = '10.100.100.100'
 		                source_cluster_type = 'master'
 		                source_cluster_port = '7000'
