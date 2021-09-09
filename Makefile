@@ -6,7 +6,8 @@ build:
 	@./build.sh
 
 	# Here we pull env variables and pass them to our docker build from the pipeline
-	docker login docker-apps-dev.artifactory.tsp.cld.touchtunes.com
+	docker login docker-apps-dev.artifactory.tsp.cld.touchtunes.comS
+
 	docker build . \
 	--no-cache \
 	--build-arg source_cluster_ip=${source_cluster_ip} \
@@ -17,8 +18,8 @@ build:
 	--build-arg destination_cluster_port=${destination_cluster_port} \
 	-t test
 
-	docker tag test artifactory.tsp.cld.touchtunes.com/docker-apps-test/test
-	docker push artifactory.tsp.cld.touchtunes.com/docker-apps-test/test
+	docker tag test docker-apps-dev.artifactory.tsp.cld.touchtunes.com/docker-apps-test/test
+	docker push docker-apps-dev.artifactory.tsp.cld.touchtunes.com/docker-apps-test/test
 
 clean:
 	rm -rf bin
