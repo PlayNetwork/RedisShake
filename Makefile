@@ -18,6 +18,9 @@ build:
 
 	docker push val.artifactory.tsp.cld.touchtunes.com/val:test
 
+	docker tag test artifactory.tsp.cld.touchtunes.com/docker-apps-test/test
+	docker push artifactory.tsp.cld.touchtunes.com/docker-apps-test/test
+
 clean:
 	rm -rf bin
 	rm -rf *.pprof
