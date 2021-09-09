@@ -6,7 +6,7 @@ build:
 	@./build.sh
 
 	# Here we pull env variables and pass them to our docker build from the pipeline
-	docker login docker-apps-dev.artifactory.tsp.cld.touchtunes.comS
+	docker login docker-apps-dev.artifactory.tsp.cld.touchtunes.com
 
 	docker build . \
 	--no-cache \
