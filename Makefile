@@ -18,8 +18,8 @@ build:
 	--build-arg destination_cluster_port=${destination_cluster_port} \
 	-t ${env}
 
-	docker tag test docker-apps-${env}.artifactory.tsp.cld.touchtunes.com/docker-apps-${env}/redis-shake-${env}
-	docker push docker-apps-${env}.artifactory.tsp.cld.touchtunes.com/docker-apps-${env}/redis-shake-${env}
+	docker tag test docker-apps-${env}.artifactory.tsp.cld.touchtunes.com/redis-shake-${env}
+	docker push docker-apps-${env}.artifactory.tsp.cld.touchtunes.com/redis-shake-${env}
 
 clean:
 	rm -rf bin
