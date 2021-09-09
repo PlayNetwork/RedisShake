@@ -8,7 +8,7 @@ pipeline {
 
 		        stage('build-stage') {
 		            environment {
-		                env = 'stage'
+		                env = 'staging'
 		                source_cluster_ip = '10.100.100.100'
 		                source_cluster_type = 'master'
 		                source_cluster_port = '7000'
