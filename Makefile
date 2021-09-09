@@ -21,8 +21,8 @@ ifeq ($(env),prod)
 	--build-arg destination_cluster_port=${destination_cluster_port} \
 	-t red
 
-	docker tag red docker-apps.artifactory.tsp.cld.touchtunes.com/redis-shake
-	docker push docker-apps.artifactory.tsp.cld.touchtunes.com/redis-shake
+	docker tag red docker-apps.artifactory.tsp.cld.touchtunes.com/docker-apps-prod-local/redis-shake
+	docker push docker-apps.artifactory.tsp.cld.touchtunes.com/docker-apps-prod-local/redis-shake
 else
 	# we call build.sh to create our golang binary for env that is not prod
 	@./build.sh
