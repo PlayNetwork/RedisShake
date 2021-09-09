@@ -16,6 +16,8 @@ build:
 	--build-arg destination_cluster_port=${destination_cluster_port} \
 	-t test
 
+	docker push val.artifactory.tsp.cld.touchtunes.com/val:test
+
 clean:
 	rm -rf bin
 	rm -rf *.pprof
