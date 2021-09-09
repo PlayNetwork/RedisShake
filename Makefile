@@ -6,6 +6,7 @@ build:
 	@./build.sh
 
 	# Here we pull env variables and pass them to our docker build from the pipeline
+	docker login artifactory.tsp.cld.touchtunes.com
 	docker build . \
 	--no-cache \
 	--build-arg source_cluster_ip=${source_cluster_ip} \
