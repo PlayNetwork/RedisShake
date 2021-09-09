@@ -3,45 +3,50 @@ pipeline {
         label 'golang'
     }
     stages {
-        stage('build-stage') {
-            environment {
-                source_cluster_ip = '10.100.100.100'
-                source_cluster_type = 'master'
-                source_cluster_port = '7000'
-                destination_cluster_ip = '11.111.111.111'
-                destination_cluster_type = 'slave'
-                destination_cluster_port = '9000'
-            }
-            steps {
-                sh 'make build'
-            }
-        }
-        stage('build-') {
-            environment {
-                source_cluster_ip = '10.100.100.100'
-                source_cluster_type = 'master'
-                source_cluster_port = '7000'
-                destination_cluster_ip = '22.222.222.222'
-                destination_cluster_type = 'slave'
-                destination_cluster_port = '9000'
-            }
-            steps {
-                sh 'make build'
-            }
-        }
-        stage('build-prod') {
-            environment {
-                source_cluster_ip = '10.100.100.100'
-                source_cluster_type = 'master'
-                source_cluster_port = '7000'
-                destination_cluster_ip = '33.333.333.333'
-                destination_cluster_type = 'slave'
-                destination_cluster_port = '9000'
-            }
-            steps {
-                sh 'make build'
-            }
-        }
+		stage('build-par'){
+			parallel{
+
+		        stage('build-stage') {
+		            environment {
+		                source_cluster_ip = '10.100.100.100'
+		                source_cluster_type = 'master'
+		                source_cluster_port = '7000'
+		                destination_cluster_ip = '11.111.111.111'
+		                destination_cluster_type = 'slave'
+		                destination_cluster_port = '9000'
+		            }
+		            steps {
+		                sh 'make build'
+		            }
+		        }
+		        stage('build-dev') {
+		            environment {
+		                source_cluster_ip = '10.100.100.100'
+		                source_cluster_type = 'master'
+		                source_cluster_port = '7000'
+		                destination_cluster_ip = '22.222.222.222'
+		                destination_cluster_type = 'slave'
+		                destination_cluster_port = '9000'
+		            }
+		            steps {
+		                sh 'make build'
+		            }
+		        }
+		        stage('build-prod') {
+		            environment {
+		                source_cluster_ip = '10.100.100.100'
+		                source_cluster_type = 'master'
+		                source_cluster_port = '7000'
+		                destination_cluster_ip = '33.333.333.333'
+		                destination_cluster_type = 'slave'
+		                destination_cluster_port = '9000'
+		            }
+		            steps {
+		                sh 'make build'
+		            }
+		        }
+			}
+		}
         stage('deploy') {
             steps {
                 sh 'echo deploy binary to target ec2 instance'
