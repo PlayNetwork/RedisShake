@@ -40,8 +40,8 @@ else
 	--build-arg destination_cluster_port=${destination_cluster_port} \
 	-t red 
 
-	docker tag red docker-apps-${env}.artifactory.tsp.cld.touchtunes.com/redis-shake-${env}
-	docker push docker-apps-${env}.artifactory.tsp.cld.touchtunes.com/redis-shake-${env}
+	docker tag red docker-apps-${env}-local.artifactory.tsp.cld.touchtunes.com/redis-shake-${env}
+	docker push docker-apps-${env}-local.artifactory.tsp.cld.touchtunes.com/redis-shake-${env}
 endif
 
 clean:
