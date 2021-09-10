@@ -8,7 +8,7 @@ pipeline {
 
 		        stage('build-stage') {
 		            environment {
-						jpass = credentials('jenkins_registry_credentials')
+						jpass = credentials('JENKINS_ARTIFACTORY')
 		                env = 'staging'
 		                source_cluster_ip = '10.100.100.100'
 		                source_cluster_type = 'master'
