@@ -18,7 +18,6 @@ pipeline {
 		                destination_cluster_port = '9000'
 		            }
 		            steps {
-						sh 'echo $jpass'
 		                sh 'make build'
 		            }
 		        }
