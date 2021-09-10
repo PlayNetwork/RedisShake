@@ -9,7 +9,7 @@ ifeq ($(env),prod)
 	@./build.sh
 
 	# Here we pull env variables and pass them to our docker build from the pipeline
-	docker login -u jenkins -p ${jpass_PSW} docker-apps.artifactory.tsp.cld.touchtunes.com
+	docker login -u jenkins -p ${jpass_PSW} docker-apps-prod-local.artifactory.tsp.cld.touchtunes.com
 
 	docker build . \
 	--no-cache \
@@ -21,8 +21,8 @@ ifeq ($(env),prod)
 	--build-arg destination_cluster_port=${destination_cluster_port} \
 	-t red
 
-	docker tag red docker-apps.artifactory.tsp.cld.touchtunes.com/docker-apps-prod-local/redis-shake
-	docker push docker-apps.artifactory.tsp.cld.touchtunes.com/docker-apps-prod-local/redis-shake
+	docker tag red docker-apps-prod-local.artifactory.tsp.cld.touchtunes.com/docker-apps-prod-local/redis-shake
+	docker push docker-apps-prod-local.artifactory.tsp.cld.touchtunes.com/docker-apps-prod-local/redis-shake
 else
 	# we call build.sh to create our golang binary for env that is not prod
 	@./build.sh
