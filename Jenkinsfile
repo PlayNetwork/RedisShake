@@ -18,7 +18,6 @@ pipeline {
 		                destination_cluster_port = '9000'
 		            }
 		            steps {
-						print 'jpass.collect { it }=' + jpass.collect { it }
 		                sh 'make build'
 		            }
 		        }

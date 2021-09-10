@@ -9,7 +9,7 @@ ifeq ($(env),prod)
 	@./build.sh
 
 	# Here we pull env variables and pass them to our docker build from the pipeline
-	docker login -u jenkins -p "${jpass}" docker-apps.artifactory.tsp.cld.touchtunes.com
+	docker login -u jenkins -p ${jpass_PSW} docker-apps.artifactory.tsp.cld.touchtunes.com
 
 	docker build . \
 	--no-cache \
@@ -28,7 +28,7 @@ else
 	@./build.sh
 
 	# Here we pull env variables and pass them to our docker build from the pipeline
-	docker login -u jenkins -p ${jpass} docker-apps-${env}.artifactory.tsp.cld.touchtunes.com
+	docker login -u jenkins -p ${jpass_PSW} docker-apps-${env}.artifactory.tsp.cld.touchtunes.com
 
 	docker build . \
 	--no-cache \
