@@ -24,6 +24,7 @@ pipeline {
 		        }
 		        stage('build-dev') {
 		            environment {
+						jpass = credentials('jenkins_registry_credentials')
 		                env = 'dev'
 		                source_cluster_ip = '10.100.100.100'
 		                source_cluster_type = 'master'
@@ -38,6 +39,7 @@ pipeline {
 		        }
 		        stage('build-prod') {
 		            environment {
+						jpass = credentials('jenkins_registry_credentials')
 						env = 'prod'
 		                source_cluster_ip = '10.100.100.100'
 		                source_cluster_type = 'master'
