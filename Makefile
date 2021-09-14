@@ -1,7 +1,7 @@
 all: 
 	./build.sh
 
-.PHONY: test
+.PHONY: test run
 
 build:
 ifeq ($(env),prod)
@@ -44,11 +44,13 @@ else
 	docker push docker-apps-${env}-local.artifactory.tsp.cld.touchtunes.com/redis-shake-${env}
 endif
 
-clean:
-	rm -rf bin
-	rm -rf *.pprof
-	rm -rf *.output
-	rm -rf logs
-	rm -rf diagnostic/
-	rm -rf *.pid
-	
+# Write the command to the shell for testing
+echo_command:
+	@echo "docker run -it  \
+	-e source_cluster_ip=test \
+	-e source_cluster_type=test1 \
+	-e source_cluster_port=test2 \
+	-e destination_cluster_ip=test3 \
+	-e destination_cluster_type=test4 \
+	-e destination_cluster_port=test5 \
+	test bash"
