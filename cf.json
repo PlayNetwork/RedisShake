@@ -1,0 +1,97 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+
+  "Parameters" : {
+    "InstanceType" : {
+      "Type" : "String",
+      "Default" : "t2.large",
+      "ConstraintDescription" : "must be a valid EC2 instance type."
+    },
+    "JenkinsPassword" : {
+	  "NoEcho": "true",
+      "Type" : "String"
+    },
+    "JenkinsUser" : {
+      "Type" : "String"
+    }
+  },
+
+  "Mappings" : {
+    "AWSInstanceType2Arch" : {
+      "t2.large"    : { "Arch" : "HVM64"  }
+    },
+    "AWSRegionArch2AMI" : {
+      "us-east-1"        : {"HVM64" : "ami-0cfc05f17eac80275", "HVMG2" : "ami-03fe4d5b1d229063a"}
+    }
+  },
+
+  "Resources" : {
+    "ShakeServer": {
+      "Type": "AWS::EC2::Instance",
+
+	  "Metadata" : {
+        "AWS::CloudFormation::Init" : {
+          "configSets" : {
+            "Install" : [ "Update","Install","Deploy" ]
+          },
+
+          "Update" : {
+            "commands" : {
+              "update_package_manager" : {
+                "command" :"sudo apt-get update -y"
+              }
+            }
+          },
+          "Install" : {
+            "packages" : {
+              "apt-get" : {
+                "wondershaper"          : [],
+                "docker"          : []
+              }
+            }
+          },
+          "Deploy" : {
+            "packages" : {
+              "apt-get" : {
+                "wondershaper"          : [],
+                "docker"          : []
+              }
+            }
+          }
+		}
+      },
+
+
+      "Properties": {
+        "ImageId" : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" },
+                          { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "InstanceType" }, "Arch" ] } ] },
+        "InstanceType"   : { "Ref" : "InstanceType" },
+        "SecurityGroupIds" : ["sg-36186253"], 
+		"SubnetId" : "subnet-e3bc2faa",
+        "KeyName"        : "touchtunes-test",
+		"Tags" : [
+            {"Key" : "Name", "Value" : "Val-Shake-Test"}
+        ],
+		"UserData"       : { "Fn::Base64" : { "Fn::Join" : ["", [
+             "#!/bin/bash -xe\n",
+             "apt-get update -y\n",
+             "apt-get install -y python-setuptools\n",
+             "mkdir -p /opt/aws/bin\n",
+             "wget https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz\n",
+             "python -m easy_install --script-dir /opt/aws/bin aws-cfn-bootstrap-latest.tar.gz\n",
+              "/opt/aws/bin/cfn-init -v ",
+             "         --stack ", { "Ref" : "AWS::StackName" },
+             "         --resource ShakeServer ",
+             "         --configsets install ",
+             "         --region ", { "Ref" : "AWS::Region" }, "\n",
+
+             "/opt/aws/bin/cfn-signal -e $? ",
+             "         --stack ", { "Ref" : "AWS::StackName" },
+             "         --resource EC2Instance ",
+             "         --region ", { "Ref" : "AWS::Region" }, "\n"
+            ]]}}
+
+      }
+    }
+  }
+}
