@@ -15,7 +15,8 @@
             "NoEcho": "true"
         },
         "JenkinsUser": {
-            "Type": "String"
+            "Type": "String",
+            "NoEcho": "true"
         }
     },
     "Mappings": {
@@ -45,8 +46,26 @@
                     "Deploy": {
                         "commands": {
                             "docker-login": {
-                                "command": "docker login docker-apps.artifactory.tsp.cld.touchtunes.com/redis-shake",
-                                "command": "docker pull docker-apps.artifactory.tsp.cld.touchtunes.com/redis-shake"
+                                "command": {
+                                    "Fn::Join": [
+                                        " ",
+                                        [
+                                            "docker login",
+                                            "-u",
+                                            {
+                                                "Ref": "JenkinsUser"
+                                            },
+                                            "-p",
+                                            {
+                                                "Ref": "JenkinsPassword"
+                                            },
+                                            "docker-apps.artifactory.tsp.cld.touchtunes.com",
+                                            "&&",
+                                            "docker pull",
+                                            "docker-apps.artifactory.tsp.cld.touchtunes.com/redis-shake"
+                                        ]
+                                    ]
+                                }
                             }
                         }
                     },
