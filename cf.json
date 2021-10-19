@@ -113,10 +113,10 @@
                 "InstanceType": {
                     "Ref": "InstanceType"
                 },
-                "KeyName": "touchtunes-test",
+                "KeyName": "devel",
                 "SecurityGroupIds": [
-                    {"sg-cec9d8ab",
-					"sg-06d2d9d976f0cc23b"}
+                    "sg-cec9d8ab",
+                    "sg-cec9d8ab"
                 ],
                 "SubnetId": "subnet-a5086e8e",
                 "Tags": [
