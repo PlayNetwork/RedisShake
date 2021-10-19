@@ -59,10 +59,10 @@
                                             {
                                                 "Ref": "JenkinsPassword"
                                             },
-                                            "docker-apps.artifactory.tsp.cld.touchtunes.com",
+                                            "docker-apps-dev.artifactory.tsp.cld.touchtunes.com",
                                             "&&",
                                             "docker pull",
-                                            "docker-apps.artifactory.tsp.cld.touchtunes.com/redis-shake"
+                                            "docker-apps-dev.artifactory.tsp.cld.touchtunes.com/redis-shake"
                                         ]
                                     ]
                                 }
