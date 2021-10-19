@@ -66,6 +66,17 @@
                                         ]
                                     ]
                                 }
+                            },
+                            "docker-run": {
+                                "command": {
+                                    "Fn::Join": [
+                                        " ",
+                                        [
+                                            "docker run -d",
+                                            "docker-apps-dev.artifactory.tsp.cld.touchtunes.com/redis-shake-dev"
+                                        ]
+                                    ]
+                                }
                             }
                         }
                     },
