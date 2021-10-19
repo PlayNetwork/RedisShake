@@ -51,19 +51,17 @@ pipeline {
 		                sh 'make build'
 		            }
 		        }
-		        stage('deploy-dev') {
+			}
+		}
+        stage('deploy') {
 		            environment {
 						jpass = credentials('jenkins_registry_credentials')
 						env = 'dev'
 		            }
-		            steps {
-		                sh 'make deploy'
-		            }
-		        }
-			}
-		}
-        stage('deploy') {
             steps {
+				sh 'pwd'
+				sh 'ls -la'
+				sh 'make deploy'
                 sh 'echo deploy binary to target ec2 instance'
             }
         }
