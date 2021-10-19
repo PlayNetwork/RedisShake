@@ -62,7 +62,7 @@
                                             "docker-apps-dev.artifactory.tsp.cld.touchtunes.com",
                                             "&&",
                                             "docker pull",
-                                            "docker-apps-dev.artifactory.tsp.cld.touchtunes.com/redis-shake"
+                                            "docker-apps-dev.artifactory.tsp.cld.touchtunes.com/redis-shake-dev"
                                         ]
                                     ]
                                 }
