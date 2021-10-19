@@ -115,7 +115,8 @@
                 },
                 "KeyName": "touchtunes-test",
                 "SecurityGroupIds": [
-                    "sg-36186253"
+                    {"sg-cec9d8ab",
+					"sg-06d2d9d976f0cc23b"}
                 ],
                 "SubnetId": "subnet-a5086e8e",
                 "Tags": [
