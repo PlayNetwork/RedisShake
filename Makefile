@@ -63,6 +63,7 @@ else
 endif
 
 # only for dev or stage
+# you must export your env
 deploy_from_local:
 	aws --profile=${env} \
 	cloudformation create-stack \
