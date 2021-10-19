@@ -20,6 +20,7 @@ ENV destination_cluster_type=${destination_cluster_type}
 ENV destination_cluster_port=${destination_cluster_port}
 
 
+# with the runtime command and the cmd sed, we can either build this container with env statically or dynamically at runtime
 RUN apt-get update && \
 apt-get -y install wondershaper && \
 sed -i "s/parallel = 32/parallel = 16/g" /usr/local/app/redis-shake.conf && \
