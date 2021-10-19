@@ -14,6 +14,22 @@
 	We currently have a modern golang app, that has a pretty solid build script from the offical source. The makefile build stage essentially packages the binary in a lightweight ubuntu container, we also use the makefile to pass some environment variables to the container so we can have the flexibility of packaging the container at run time or dynamically run the container with environment variables locally if desired. These variables are essentially what is needed to point the container towards a source and destination cluster
 
 	The final step is to tage the image to the artifactory and push it.
+
+
+
+
+- Parametrizing the container
+
+	We can currently modify how the container is built in the pipeling by modification of the environment variables
+
+- CNF
+	
+	The cloudformation is responsible for 
+	- Creating the ec2 instance
+	- Updating it
+	- Setting up its security groups and subnets
+	- Installing docker
+	- Pulling and running RedisShake 
 	
 
 ==========
