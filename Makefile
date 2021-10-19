@@ -59,7 +59,7 @@ else
 	--parameters \
 		ParameterKey=JenkinsPassword,ParameterValue=${jpass} \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
-	--template-body file:///Users/vpotra/work/git/RedisShake/cf.json
+	--template-body file:///tmp/workspace/build-redisshake/cf.json
 endif
 
 # only for dev or stage
