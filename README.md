@@ -1,3 +1,19 @@
+- What does this project do
+	This project essentially connects to a source redis cluster, and does its best to push data
+	to a destination Redis cluster, in this case from our datacenter to the cloud.
+- Why we did it
+	At the time of writing there was a requirement to Get some data from a Redis Cluster
+	in our data center to the cloud.
+	The reason we have to use this synchronization app is that in our datacenter we have Oracle stored procs that get synchronized to a Redis cluster in AWS. Having this data reliably in aws Allows for more stable and quick devellopment of features for the Dev Team.
+
+- How we containerize it
+	
+
+==========
+Following is the official doc
+==========
+
+
 RedisShake is mainly used to synchronize data from one redis to another.<br>
 Thanks to the Douyu's WSD team for the support. <br>
 

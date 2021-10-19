@@ -1,8 +1,8 @@
 all: 
 	./build.sh
 
+# We have to use an if else, since there is different naming for the root repositories. Aka docker-apps and docker-apps-<stage|dev>-
 .PHONY: test run
-
 build:
 ifeq ($(env),prod)
 	# we call build.sh to create our golang binary
@@ -41,8 +41,6 @@ else
 	docker push docker-apps-${env}-local.artifactory.tsp.cld.touchtunes.com/redis-shake-${env}
 endif
 
-# figure out how template body works in jenkins
-# figure  out how to use "file" for jenkins
 deploy:
 ifeq ($(env),prod)
 	aws --profile=${env} \
@@ -72,6 +70,7 @@ deploy_from_local:
 		ParameterKey=JenkinsPassword,ParameterValue=${jpass_PSW} \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
 		ParameterKey=Env,ParameterValue=${env} \
+# replace this line with the location of your cloud formation json
 	--template-body file:///Users/vpotra/work/git/RedisShake/cf.json
 
 # Write the command to the shell for testing
