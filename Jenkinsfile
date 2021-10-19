@@ -55,7 +55,7 @@ pipeline {
 		}
         stage('deploy') {
 		            environment {
-						jpass = credentials('jenkins_registry_credentials')
+						jpass = credentials('jenkins_registry_credentials_PSW')
 						env = 'dev'
 		            }
             steps {
