@@ -5,7 +5,6 @@ pipeline {
     stages {
 		stage('build-par'){
 			parallel{
-
 		        stage('build-stage') {
 		            environment {
 						jpass = credentials('jenkins_registry_credentials')
@@ -53,11 +52,12 @@ pipeline {
 		        }
 			}
 		}
+
         stage('deploy') {
-		            environment {
-						jpass = credentials('jenkins_registry_credentials')
-						env = 'dev'
-		            }
+           environment {
+				jpass = credentials('jenkins_registry_credentials')
+				env = 'dev'
+           }
             steps {
 				sh 'pwd'
 				sh 'ls -la'
