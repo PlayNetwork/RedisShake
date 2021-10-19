@@ -49,7 +49,7 @@ ifeq ($(env),prod)
 	cloudformation create-stack \
 	--stack-name redis-shake \
 	--parameters \
-		ParameterKey=JenkinsPassword,ParameterValue=${jpass} \
+		ParameterKey=JenkinsPassword,ParameterValue=${jpass_PSW} \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
 	--template-body file:///Users/vpotra/work/git/RedisShake/cf.json
 else
@@ -57,7 +57,7 @@ else
 	cloudformation create-stack \
 	--stack-name redis-shake-${env} \
 	--parameters \
-		ParameterKey=JenkinsPassword,ParameterValue=${jpass} \
+		ParameterKey=JenkinsPassword,ParameterValue=${jpass_PSW} \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
 	--template-body file:///tmp/workspace/build-redisshake/cf.json
 endif
@@ -68,7 +68,7 @@ deploy_from_local:
 	cloudformation create-stack \
 	--stack-name redis-shake-${env} \
 	--parameters \
-		ParameterKey=JenkinsPassword,ParameterValue=${jpass} \
+		ParameterKey=JenkinsPassword,ParameterValue=${jpass_PSW} \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
 		ParameterKey=Env,ParameterValue=${env} \
 	--template-body file:///Users/vpotra/work/git/RedisShake/cf.json
