@@ -51,6 +51,15 @@ pipeline {
 		                sh 'make build'
 		            }
 		        }
+		        stage('deploy-dev') {
+		            environment {
+						jpass = credentials('jenkins_registry_credentials')
+						env = 'dev'
+		            }
+		            steps {
+		                sh 'make deploy'
+		            }
+		        }
 			}
 		}
         stage('deploy') {
