@@ -7,6 +7,9 @@
 	The reason we have to use this synchronization app is that in our datacenter we have Oracle stored procs that get synchronized to a Redis cluster in AWS. Having this data reliably in aws Allows for more stable and quick devellopment of features for the Dev Team.
 
 - How we containerize it
+	We currently have a modern golang app, that has a pretty solid build script from the offical source. The makefile build stage essentially packages the binary in a lightweight ubuntu container, we also use the makefile to pass some environment variables to the container so we can have the flexibility of packaging the container at run time or dynamically run the container with environment variables locally if desired. These variables are essentially what is needed to point the container towards a source and destination cluster
+
+	The final step is to tage the image to the artifactory and push it.
 	
 
 ==========
