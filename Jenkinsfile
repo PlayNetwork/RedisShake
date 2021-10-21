@@ -3,7 +3,7 @@ pipeline {
         label 'golang'
     }
     parameters {
-        choice(name: "ENVIRONMENT", choices: ["production", "staging", "development"], description: "Choose which env we deploy too")
+        choice(name: "ENVIRONMENT", choices: ["stage", "dev","prod"], description: "Choose which env we deploy too")
         string(name: "Source cluster ip", defaultValue: "10.0.0.1", trim: true, description: "The redis cluster source ip or the dns ")
         string(name: "Source cluster port", defaultValue: "9999", trim: true, description: "The port redis listens on")
         string(name: "Source cluster type", defaultValue: "cluster", trim: true, description: "The redis source type, such as individual or cluster, this should generally always be cluster")

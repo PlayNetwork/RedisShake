@@ -17,7 +17,33 @@
         "JenkinsUser": {
             "Type": "String",
             "NoEcho": "true"
+        },
+
+        "source_ip": {
+            "Type": "String",
+            "NoEcho": "true"
+        },
+        "source_port": {
+            "Type": "String",
+            "NoEcho": "true"
+        },
+        "source_type": {
+            "Type": "String",
+            "NoEcho": "true"
+        },
+        "destination_ip": {
+            "Type": "String",
+            "NoEcho": "true"
+        },
+        "destination_port": {
+            "Type": "String",
+            "NoEcho": "true"
+        },
+        "destination_type": {
+            "Type": "String",
+            "NoEcho": "true"
         }
+
     },
     "Mappings": {
         "AWSInstanceType2Arch": {

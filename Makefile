@@ -40,12 +40,12 @@ ifeq ($(env),prod)
 		ParameterKey=JenkinsPassword,ParameterValue=${jpass_PSW} \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
 
-		ParameterKey=JenkinsUser,ParameterValue=jenkins \
-		ParameterKey=JenkinsUser,ParameterValue=jenkins \
-		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+		ParameterKey=source_ip,ParameterValue=${} \
+		ParameterKey=source_port,ParameterValue=${} \
+		ParameterKey=source_type,ParameterValue=${} \
 
-		ParameterKey=JenkinsUser,ParameterValue=jenkins \
-		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+		ParameterKey=JenkinsUser,ParameterValue=${} \
+		ParameterKey=JenkinsUser,ParameterValue=${} \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
 	--template-body file:///Users/<filepath>/cf.json
 else
