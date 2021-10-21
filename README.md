@@ -1,13 +1,11 @@
 - What does this project do
 
-	This project essentially connects to a source redis cluster, and does its best to push data
-	to a destination Redis cluster, in this case from our datacenter to the cloud.
+	This project essentially connects to a source redis cluster, and does its best to push data to a destination Redis cluster, in this case from our datacenter to the cloud.
 - Why we did it
 
-	At the time of writing there was a requirement to Get some data from a Redis Cluster
-	in our data center to the cloud.
+	At the time of writing there was a requirement to get some data from a Redis Cluster in our data center to the cloud.
 
-	The reason we have to use this synchronization app is that in our datacenter we have Oracle stored procs that get synchronized to a Redis cluster in the local Redis cluster. Having this data as reliably as we can in aws Allows for more stable and quick devellopment of features for the Dev Team.
+	The reason we have to use this synchronization app is that in our datacenter we have Oracle stored procs that get synchronized to a Redis cluster in the local Redis cluster. Having this data as reliably as we can in aws allows for more stable and quick devellopment of features for the Dev Team.
 
 - How we containerize it
 	
@@ -15,12 +13,9 @@
 
 	The final step is to tage the image to the artifactory and push it.
 
-
-
-
 - Parametrizing the container
 
-	We can currently modify how the container is built in the pipeling by modification of the environment variables in the jenkins file at the build stage
+	We can currently modify how the container is built in the pipeline by modification of the environment variables in the jenkins file at the build stage
 
 - CNF
 	
@@ -30,7 +25,6 @@
 	- Setting up its security groups and subnets
 	- Installing docker
 	- Pulling and running RedisShake 
-	
 
 ==========
 Following is the official doc
