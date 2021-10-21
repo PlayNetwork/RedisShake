@@ -19,27 +19,27 @@
             "NoEcho": "true"
         },
 
-        "source_ip": {
+        "sourceIp": {
             "Type": "String",
             "NoEcho": "true"
         },
-        "source_port": {
+        "sourcePort": {
             "Type": "String",
             "NoEcho": "true"
         },
-        "source_type": {
+        "sourceType": {
             "Type": "String",
             "NoEcho": "true"
         },
-        "destination_ip": {
+        "destinationIp": {
             "Type": "String",
             "NoEcho": "true"
         },
-        "destination_port": {
+        "destinationPort": {
             "Type": "String",
             "NoEcho": "true"
         },
-        "destination_type": {
+        "destinationType": {
             "Type": "String",
             "NoEcho": "true"
         }
@@ -101,27 +101,27 @@
                                             "docker run -d",
                                             "-e",
                                             {
-                                                "Ref": "source_ip"
+                                                "Ref": "sourceIp"
                                             },
                                             "-e",
                                             {
-                                                "Ref": "source_type"
+                                                "Ref": "sourceType"
                                             },
                                             "-e",
                                             {
-                                                "Ref": "source_port"
+                                                "Ref": "sourcePort"
                                             },
                                             "-e",
                                             {
-                                                "Ref": "destination_ip"
+                                                "Ref": "destinationIp"
                                             },
                                             "-e",
                                             {
-                                                "Ref": "destination_type"
+                                                "Ref": "destinationType"
                                             },
                                             "-e",
                                             {
-                                                "Ref": "destination_port"
+                                                "Ref": "destinationPort"
                                             },
                                             "docker-apps-dev.artifactory.tsp.cld.touchtunes.com/redis-shake-dev"
                                         ]
