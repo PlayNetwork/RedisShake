@@ -39,6 +39,14 @@ ifeq ($(env),prod)
 	--parameters \
 		ParameterKey=JenkinsPassword,ParameterValue=${jpass_PSW} \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+
+		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+
+		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+		ParameterKey=JenkinsUser,ParameterValue=jenkins \
 	--template-body file:///Users/<filepath>/cf.json
 else
 	aws --profile=${env} \
@@ -46,6 +54,14 @@ else
 	--stack-name redis-shake-${env} \
 	--parameters \
 		ParameterKey=JenkinsPassword,ParameterValue=${jpass_PSW} \
+		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+
+		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+
+		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+		ParameterKey=JenkinsUser,ParameterValue=jenkins \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
 	--template-body file:///tmp/workspace/build-redisshake/cf.json
 endif
