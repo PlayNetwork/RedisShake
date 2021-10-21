@@ -39,7 +39,6 @@ ifeq ($(env),prod)
 	--parameters \
 		ParameterKey=JenkinsPassword,ParameterValue=${jpass_PSW} \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
-
 		ParameterKey=source_ip,ParameterValue=${source_ip} \
 		ParameterKey=source_port,ParameterValue=${source_port} \
 		ParameterKey=source_type,ParameterValue=${source_type} \
@@ -55,7 +54,6 @@ else
 	--parameters \
 		ParameterKey=JenkinsPassword,ParameterValue=${jpass_PSW} \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
-
 		ParameterKey=source_ip,ParameterValue=${source_ip} \
 		ParameterKey=source_port,ParameterValue=${source_port} \
 		ParameterKey=source_type,ParameterValue=${source_type} \
