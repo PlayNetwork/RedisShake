@@ -99,6 +99,30 @@
                                         " ",
                                         [
                                             "docker run -d",
+                                            "-e",
+                                            {
+                                                "Ref": "source_ip"
+                                            },
+                                            "-e",
+                                            {
+                                                "Ref": "source_type"
+                                            },
+                                            "-e",
+                                            {
+                                                "Ref": "source_port"
+                                            },
+                                            "-e",
+                                            {
+                                                "Ref": "destination_ip"
+                                            },
+                                            "-e",
+                                            {
+                                                "Ref": "destination_type"
+                                            },
+                                            "-e",
+                                            {
+                                                "Ref": "destination_port"
+                                            },
                                             "docker-apps-dev.artifactory.tsp.cld.touchtunes.com/redis-shake-dev"
                                         ]
                                     ]

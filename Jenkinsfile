@@ -4,14 +4,14 @@ pipeline {
     }
     parameters {
         choice(name: "ENVIRONMENT", choices: ["stage", "dev","prod"], description: "Choose which env we deploy too")
-        string(name: "Source cluster ip", defaultValue: "10.0.0.1", trim: true, description: "The redis cluster source ip or the dns ")
-        string(name: "Source cluster port", defaultValue: "9999", trim: true, description: "The port redis listens on")
-        string(name: "Source cluster type", defaultValue: "cluster", trim: true, description: "The redis source type, such as individual or cluster, this should generally always be cluster")
+        string(name: "source_cluster_ip", defaultValue: "10.0.0.1", trim: true, description: "The redis cluster source ip or the dns ")
+        string(name: "source_cluster_port", defaultValue: "9999", trim: true, description: "The port redis listens on")
+        string(name: "source_cluster_type", defaultValue: "cluster", trim: true, description: "The redis source type, such as individual or cluster, this should generally always be cluster")
 
 
-        string(name: "Destination cluster ip", defaultValue: "10.0.0.1", trim: true, description: "The redis cluster destination ip or the dns ")
-        string(name: "Destination cluster port", defaultValue: "9999", trim: true, description: "The port redis listens on")
-        string(name: "Destination cluster type", defaultValue: "cluster", trim: true, description: "The redis destination type, such as individual or cluster, this should generally always be cluster")
+        string(name: "destination_cluster_ip", defaultValue: "10.0.0.1", trim: true, description: "The redis cluster destination ip or the dns ")
+        string(name: "destination_cluster_port", defaultValue: "9999", trim: true, description: "The port redis listens on")
+        string(name: "destination_cluster_type", defaultValue: "cluster", trim: true, description: "The redis destination type, such as individual or cluster, this should generally always be cluster")
     }
 
     stages {
@@ -51,6 +51,12 @@ pipeline {
            environment {
 				jpass = credentials('jenkins_registry_credentials')
 				env = 'dev'
+				source_ip = "$params.source_cluster_ip"
+				source_type = "$params.source_cluster_type"
+				source_port = "$params.source_cluster_port"
+				destination_ip = "$params.destination_cluster_ip"
+				destination_type = "$params.destination_cluster_type"
+				destination_port = "$params.destination_cluster_port"
            }
             steps {
 				sh 'pwd'

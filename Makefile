@@ -40,13 +40,13 @@ ifeq ($(env),prod)
 		ParameterKey=JenkinsPassword,ParameterValue=${jpass_PSW} \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
 
-		ParameterKey=source_ip,ParameterValue=${} \
-		ParameterKey=source_port,ParameterValue=${} \
-		ParameterKey=source_type,ParameterValue=${} \
+		ParameterKey=source_ip,ParameterValue=${source_ip} \
+		ParameterKey=source_port,ParameterValue=${source_port} \
+		ParameterKey=source_type,ParameterValue=${source_type} \
+		ParameterKey=destination_ip,ParameterValue=${destination_ip} \
+		ParameterKey=destination_port,ParameterValue=${destination_port} \
+		ParameterKey=destination_type,ParameterValue=${destination_type} \
 
-		ParameterKey=JenkinsUser,ParameterValue=${} \
-		ParameterKey=JenkinsUser,ParameterValue=${} \
-		ParameterKey=JenkinsUser,ParameterValue=jenkins \
 	--template-body file:///Users/<filepath>/cf.json
 else
 	aws --profile=${env} \
@@ -56,13 +56,12 @@ else
 		ParameterKey=JenkinsPassword,ParameterValue=${jpass_PSW} \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
 
-		ParameterKey=JenkinsUser,ParameterValue=jenkins \
-		ParameterKey=JenkinsUser,ParameterValue=jenkins \
-		ParameterKey=JenkinsUser,ParameterValue=jenkins \
-
-		ParameterKey=JenkinsUser,ParameterValue=jenkins \
-		ParameterKey=JenkinsUser,ParameterValue=jenkins \
-		ParameterKey=JenkinsUser,ParameterValue=jenkins \
+		ParameterKey=source_ip,ParameterValue=${source_ip} \
+		ParameterKey=source_port,ParameterValue=${source_port} \
+		ParameterKey=source_type,ParameterValue=${source_type} \
+		ParameterKey=destination_ip,ParameterValue=${destination_ip} \
+		ParameterKey=destination_port,ParameterValue=${destination_port} \
+		ParameterKey=destination_type,ParameterValue=${destination_type} \
 	--template-body file:///tmp/workspace/build-redisshake/cf.json
 endif
 
