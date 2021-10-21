@@ -13,12 +13,6 @@ ifeq ($(env),prod)
 
 	docker build . \
 	--no-cache \
-	--build-arg source_cluster_ip=${source_cluster_ip} \
-	--build-arg source_cluster_type=${source_cluster_type} \
-	--build-arg source_cluster_port=${source_cluster_port} \
-	--build-arg destination_cluster_ip=${destination_cluster_ip} \
-	--build-arg destination_cluster_type=${destination_cluster_type} \
-	--build-arg destination_cluster_port=${destination_cluster_port} \
 	-t red
 
 	docker tag red docker-apps-prod-local.artifactory.tsp.cld.touchtunes.com/docker-apps-prod-local/redis-shake
@@ -29,15 +23,11 @@ else
 
 	docker build . \
 	--no-cache \
-	--build-arg source_cluster_ip=${source_cluster_ip} \
-	--build-arg source_cluster_type=${source_cluster_type} \
-	--build-arg source_cluster_port=${source_cluster_port} \
-	--build-arg destination_cluster_ip=${destination_cluster_ip} \
-	--build-arg destination_cluster_type=${destination_cluster_type} \
-	--build-arg destination_cluster_port=${destination_cluster_port} \
 	-t red 
 
-	docker tag red docker-apps-${env}-local.artifactory.tsp.cld.touchtunes.com/redis-shake-${env}
+	docker tag red docker-apps-${env}-local.artifactory.tsp.cld.touchtunes.com/redis-shake-${env}:${BUILD_NUMBER}
+	docker tag red docker-apps-${env}-local.artifactory.tsp.cld.touchtunes.com/redis-shake-${env}:latest
+
 	docker push docker-apps-${env}-local.artifactory.tsp.cld.touchtunes.com/redis-shake-${env}
 endif
 
