@@ -51,6 +51,7 @@ else
 endif
 
 # only for dev or stage
+# you must use your local file path for the json
 # you must export your env
 deploy_from_local:
 	aws --profile=${env} \
