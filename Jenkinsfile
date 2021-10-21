@@ -21,12 +21,6 @@ pipeline {
 		            environment {
 						jpass = credentials('jenkins_registry_credentials')
 		                env = 'staging'
-		                source_cluster_ip = '10.100.100.100'
-		                source_cluster_type = 'master'
-		                source_cluster_port = '7000'
-		                destination_cluster_ip = '11.111.111.111'
-		                destination_cluster_type = 'slave'
-		                destination_cluster_port = '9000'
 		            }
 		            steps {
 		                sh 'make build'
@@ -36,12 +30,6 @@ pipeline {
 		            environment {
 						jpass = credentials('jenkins_registry_credentials')
 		                env = 'dev'
-		                source_cluster_ip = '10.100.100.100'
-		                source_cluster_type = 'master'
-		                source_cluster_port = '7000'
-		                destination_cluster_ip = '22.222.222.222'
-		                destination_cluster_type = 'slave'
-		                destination_cluster_port = '9000'
 		            }
 		            steps {
 		                sh 'make build'
@@ -51,12 +39,6 @@ pipeline {
 		            environment {
 						jpass = credentials('jenkins_registry_credentials')
 						env = 'prod'
-		                source_cluster_ip = '10.100.100.100'
-		                source_cluster_type = 'master'
-		                source_cluster_port = '7000'
-		                destination_cluster_ip = '33.333.333.333'
-		                destination_cluster_type = 'slave'
-		                destination_cluster_port = '9000'
 		            }
 		            steps {
 		                sh 'make build'
