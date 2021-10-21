@@ -39,7 +39,7 @@ ifeq ($(env),prod)
 	--parameters \
 		ParameterKey=JenkinsPassword,ParameterValue=${jpass_PSW} \
 		ParameterKey=JenkinsUser,ParameterValue=jenkins \
-	--template-body file:///Users/vpotra/work/git/RedisShake/cf.json
+	--template-body file:///Users/<filepath>/cf.json
 else
 	aws --profile=${env} \
 	cloudformation create-stack \
