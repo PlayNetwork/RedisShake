@@ -3,11 +3,10 @@ pipeline {
         label 'golang'
     }
     parameters {
-        booleanParam(name: "TEST_BOOLEAN", defaultValue: true, description: "Sample boolean parameter")
-        string(name: "TEST_STRING", defaultValue: "ssbostan", trim: true, description: "Sample string parameter")
-        text(name: "TEST_TEXT", defaultValue: "Jenkins Pipeline Tutorial", description: "Sample multi-line text parameter")
-        password(name: "TEST_PASSWORD", defaultValue: "SECRET", description: "Sample password parameter")
-        choice(name: "TEST_CHOICE", choices: ["production", "staging", "development"], description: "Sample multi-choice parameter")
+        choice(name: "ENVIRONMENT", choices: ["production", "staging", "development"], description: "Choose which env we deploy too")
+        string(name: "Source cluster ip", defaultValue: "10.0.0.1", trim: true, description: "The redis cluster source ip or the dns ")
+        string(name: "Source cluster port", defaultValue: "9999", trim: true, description: "The port redis listens on")
+        string(name: "Source cluster type", defaultValue: "cluster", trim: true, description: "The redis source type, such as individual or cluster, this should generally always be cluster")
     }
 
     stages {
